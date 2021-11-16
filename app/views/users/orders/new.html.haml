@@ -1,0 +1,24 @@
+%h1 New users_order
+= form_with model: [:users, @order] do |order_form|
+  %div
+    = order_form.label :delivery_date, class: 'd-block'
+    = order_form.date_field :delivery_date
+  %div
+    = order_form.label :delivery_time_id, class: 'd-block'
+    = order_form.select :delivery_time_id, DeliveryTime.order(:id).map{ |delivery_time| ["#{delivery_time.start_time} ~ #{delivery_time.end_time}", delivery_time.id] }
+
+  = order_form.fields_for  @user_delivery_info do |user_delivery_info_form|
+    %div
+      = user_delivery_info_form.label :first_name, class: 'd-block'
+      = user_delivery_info_form.text_field :first_name
+    %div
+      = user_delivery_info_form.label :last_name, class: 'd-block'
+      = user_delivery_info_form.text_field :last_name
+    %div
+      = user_delivery_info_form.label :addres, class: 'd-block'
+      = user_delivery_info_form.text_area :address
+    %div.mb-2
+      = user_delivery_info_form.label :postal_code, class: 'd-block'
+      = user_delivery_info_form.text_field :postal_code
+
+  = order_form.submit

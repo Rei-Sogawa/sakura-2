@@ -1,0 +1,17 @@
+= form_with model: [:admins, @product] do |product_form|
+
+  = product_form.fields_for @product_version do |product_version_form|
+    %div
+      = product_version_form.label :name, class: 'd-block'
+      = product_version_form.text_field :name
+    %div
+      = product_version_form.label :description, class: 'd-block'
+      = product_version_form.text_area :description
+    %div 
+      = product_version_form.label :price, class: 'd-block'
+      = product_version_form.number_field :price, min: 0
+    %div.mb-2
+      = product_version_form.label :published, class: 'd-block'
+      = product_version_form.check_box :published
+
+  = product_form.submit

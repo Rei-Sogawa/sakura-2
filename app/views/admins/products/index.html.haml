@@ -1,0 +1,22 @@
+%h1 Listing admins_products
+%table.table
+  %thead
+    %tr
+      %th name
+      %th description
+      %th price
+      %th published
+      %th actions
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td= product.latest_version.name
+        %td= product.latest_version.description
+        %td= product.latest_version.price
+        %td= product.latest_version.published
+        %td
+          = link_to 'Show', [:admins, product]
+          = link_to 'Edit', edit_admins_product_path(product)
+          = link_to 'Destroy', [:admins, product], :method => :delete, :data => { :confirm => 'Are you sure?' }
+%br
+= link_to 'New Product', new_admins_product_path
