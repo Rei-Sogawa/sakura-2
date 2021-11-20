@@ -1,0 +1,82 @@
+@startuml db model
+skinparam linetype ortho
+
+entity User {
+  id
+  --
+  first_name
+  last_name
+  address
+  postal_code
+  created_at
+  updated_at
+}
+entity Admin {
+  id
+  --
+  created_at
+  updated_at
+}
+entity Product {
+  id
+  --
+  name
+  description
+  price
+  published
+  position
+  created_at
+  updated_at
+}
+entity Cart {
+  id
+  --
+  created_at
+  updated_at
+  user_id
+}
+entity CartProduct {
+  id
+  --
+  quantity
+  created_at
+  updated_at
+  cart_id
+  product_id
+}
+entity Order {
+  id
+  --
+  postage
+  cash_on_delivery_fee
+  derivery_date
+  derivery_time
+  first_name
+  last_name
+  address
+  postal_code
+  created_at
+  updated_at
+  user_id
+}
+entity OrderProduct {
+  id
+  --
+  quantity
+  name
+  description
+  price
+  created_at
+  updated_at
+  order_id
+  product_id
+}
+
+User |o..|| Cart
+Cart ||..o{ CartProduct
+CartProduct }o..|| Product
+
+User ||..o{ Order
+Order ||..|{ OrderProduct
+OrderProduct }o..|| Product
+@enduml
