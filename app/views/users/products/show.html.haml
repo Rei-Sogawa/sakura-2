@@ -1,0 +1,13 @@
+%p#notice= notice
+%div
+  name:
+  = @product_version.name
+%div
+  description:
+  = @product_version.description
+%div
+  price:
+  = @product_version.price
+= link_to 'Add to Cart', users_cart_products_path(cart_product: { product_id: @product.id }), method: :post
+\|
+= link_to 'Back', users_products_path

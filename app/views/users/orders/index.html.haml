@@ -1,0 +1,13 @@
+%h1 Listing users_orders
+%table.table
+  %thead
+    %tr
+      %th delivery_date
+      %th delivery_time
+      %th total_price
+  %tbody
+    - @orders.each do |order|
+      %tr
+        %td= order.delivery_date
+        %td= "#{order.delivery_time.start_time} ~ #{order.delivery_time.end_time}" 
+        %td= order.total_price

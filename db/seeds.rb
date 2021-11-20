@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Admin.create!(email: 'admin+1@example.com', password: 'Password00') if Admin.count.zero?
+User.create!(email: 'user+1@example.com', password: 'Password00') if User.count.zero?
+DeliveryTime.create(start_time: 8, end_time: 12)
+DeliveryTime.create(start_time: 12, end_time: 14)
+DeliveryTime.create(start_time: 14, end_time: 16)
+DeliveryTime.create(start_time: 16, end_time: 18)
+DeliveryTime.create(start_time: 18, end_time: 20)
+DeliveryTime.create(start_time: 20, end_time: 21)

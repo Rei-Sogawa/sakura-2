@@ -1,0 +1,16 @@
+%p#notice= notice
+%div
+  name:
+  = @product_version.name
+%div
+  description:
+  = @product_version.description
+%div
+  price:
+  = @product_version.price
+%div
+  published:
+  = @product_version.published
+= link_to 'Edit', edit_admins_product_path(@product)
+\|
+= link_to 'Back', admins_products_path

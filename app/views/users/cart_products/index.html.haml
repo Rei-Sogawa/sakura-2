@@ -1,0 +1,34 @@
+%h1 Listing users_cart_products
+%table.table
+  %thead
+    %tr
+      %th name
+      %th description
+      %th price
+      %th actions
+  %tbody
+    - @cart_products.each do |cart_product|
+      %tr
+        %td= cart_product.product.latest_version.name
+        %td= cart_product.product.latest_version.description
+        %td= cart_product.product.latest_version.price
+        %td
+          = link_to 'Show', [:users, cart_product.product]
+          = link_to 'Destroy', [:users, cart_product], method: :delete, data: { :confirm => 'Are you sure?' }
+
+.mx-2
+  %div
+    %span.fw-bold sub total:
+    = current_user.sub_total_price
+  %div
+    %span.fw-bold cash on delivery:
+    = current_user.cash_on_delivery
+  %div
+    %span.fw-bold postage:
+    = current_user.postage
+  %div
+    %span.fw-bold total:
+    = current_user.total_price
+
+.mx-2
+  = link_to 'Order Products', new_users_order_path

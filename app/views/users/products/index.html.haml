@@ -1,0 +1,16 @@
+%h1 Listing users_products
+%table.table
+  %thead
+    %tr
+      %th name
+      %th description
+      %th price
+      %th actions
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td= product.latest_version.name
+        %td= product.latest_version.description
+        %td= product.latest_version.price
+        %td
+          = link_to 'Show', [:users, product]
