@@ -49,8 +49,8 @@ entity Order {
   --
   postage
   cash_on_delivery_fee
-  derivery_date
-  derivery_time
+  delivery_date
+  delivery_time
   first_name
   last_name
   address
